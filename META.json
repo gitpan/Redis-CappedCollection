@@ -4,7 +4,7 @@
       "TrackingSoft LLC <sgladkov@trackingsoft.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -29,7 +29,7 @@
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "ExtUtils::MakeMaker" : 0
          }
       },
       "runtime" : {
@@ -38,10 +38,11 @@
             "Digest::SHA1" : "2.13",
             "Mouse" : "0.97",
             "Params::Util" : "1.07",
-            "Redis" : "1.952"
+            "Redis" : "1.952",
+            "perl" : "5.010"
          }
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.02"
 }
