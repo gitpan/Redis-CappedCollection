@@ -26,4 +26,4 @@ requires:
   Params::Util: 1.07
   Redis: 1.952
   perl: 5.010
-version: 0.03
+version: 0.04
