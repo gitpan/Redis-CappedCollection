@@ -4,7 +4,7 @@
       "TrackingSoft LLC <sgladkov@trackingsoft.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.8, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "ExtUtils::MakeMaker version 6.82, CPAN::Meta::Converter version 2.132830",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,8 @@
    "no_index" : {
       "directory" : [
          "t",
-         "inc"
+         "inc",
+         "xt"
       ]
    },
    "prereqs" : {
@@ -38,12 +39,18 @@
             "Digest::SHA1" : "2.13",
             "Mouse" : "0.97",
             "Params::Util" : "1.07",
-            "Redis" : "1.952",
+            "Redis" : "1.963",
             "Try::Tiny" : "0.18",
             "perl" : "5.010"
          }
       }
    },
+   "provides" : {
+      "Redis::CappedCollection" : {
+         "file" : "lib/Redis/CappedCollection.pm",
+         "version" : "0.11"
+      }
+   },
    "release_status" : "stable",
-   "version" : "0.10"
+   "version" : "0.11"
 }
