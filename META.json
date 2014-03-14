@@ -4,7 +4,7 @@
       "TrackingSoft LLC <sgladkov@trackingsoft.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.82, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "ExtUtils::MakeMaker version 6.9, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "perl_5"
    ],
@@ -48,9 +48,9 @@
    "provides" : {
       "Redis::CappedCollection" : {
          "file" : "lib/Redis/CappedCollection.pm",
-         "version" : "0.11"
+         "version" : "0.12"
       }
    },
    "release_status" : "stable",
-   "version" : "0.11"
+   "version" : "0.12"
 }

@@ -47,7 +47,7 @@ use Redis::CappedCollection qw(
 
 my $redis;
 my $real_redis;
-my $port = Net::EmptyPort::empty_port( 32637 ); # 32637-32766 Unassigned
+my $port = Net::EmptyPort::empty_port( DEFAULT_PORT );
 
 eval { $real_redis = Redis->new( server => DEFAULT_SERVER.":".DEFAULT_PORT ) };
 my $exists_real_redis = 1;
@@ -216,14 +216,14 @@ foreach my $arg ( ( undef, 0, 0.5, 1, -1, -3, "", "0", "0.5", "1", 9999999999999
 }
 is $coll.'', $tmp, "value has not changed";
 
-$tmp = $coll.'';
-foreach my $arg ( ( undef, 0, 0.5, 1, -1, -3, "", "0", "0.5", "1", 9999999999999999, \"scalar", [], $uuid ) )
-{
-    dies_ok { $coll = Redis::CappedCollection->new(
-        redis => $arg,
-        ) } "expecting to die";
-}
-is $coll.'', $tmp, "value has not changed";
+#$tmp = $coll.'';
+#foreach my $arg ( ( undef, 0, 0.5, 1, -1, -3, "", "0", "0.5", "1", 9999999999999999, \"scalar", [], $uuid ) )
+#{
+#    dies_ok { $coll = Redis::CappedCollection->new(
+#        redis => $arg,
+#        ) } "expecting to die";
+#}
+#is $coll.'', $tmp, "value has not changed";
 
 $tmp = $coll.'';
 foreach my $arg ( ( undef, "", \"scalar", [], $uuid ) )
@@ -279,7 +279,7 @@ foreach my $arg ( ( undef, 0.5, -1, -3, "", "0.5", \"scalar", [], $uuid ) )
     is $coll.'', $tmp, "value has not changed";
 }
 
-$port = Net::EmptyPort::empty_port( 32637 );
+$port = Net::EmptyPort::empty_port( DEFAULT_PORT );
 $redis = Test::RedisServer->new( conf =>
     {
         port                => $port,
