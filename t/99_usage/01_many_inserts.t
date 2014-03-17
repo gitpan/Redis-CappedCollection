@@ -4,7 +4,7 @@ use 5.010;
 use strict;
 use warnings;
 
-use lib 'lib';
+use lib 'lib', 't/tlib';
 
 use Test::More;
 plan "no_plan";
@@ -29,6 +29,11 @@ use Redis::CappedCollection qw(
     NAMESPACE
     );
 
+use Redis::CappedCollection::Test::Utils qw(
+    get_redis
+    verify_redis
+);
+
 use constant {
     TEST_SECS               => 5,                       # recommend 30
     VISITOR_ID_LEN          => 20,
@@ -38,22 +43,7 @@ use constant {
     advance_cleanup_bytes   => 501,
     };
 
-my $redis;
-my $real_redis;
-my $port = Net::EmptyPort::empty_port( DEFAULT_PORT );
-
-eval { $real_redis = Redis->new( server => DEFAULT_SERVER.":".DEFAULT_PORT ) };
-if ( !$real_redis )
-{
-    $redis = eval { Test::RedisServer->new( conf => { port => $port }, timeout => 3 ) };
-    if ( $redis )
-    {
-        eval { $real_redis = Redis->new( server => DEFAULT_SERVER.":".$port ) };
-    }
-}
-my $skip_msg;
-$skip_msg = "Redis server is unavailable" unless ( !$@ && $real_redis && $real_redis->ping );
-$skip_msg = "Need a Redis server version 2.6 or higher" if ( !$skip_msg && !eval { return $real_redis->eval( 'return 1', 0 ) } );
+my ( $redis, $skip_msg, $port ) = verify_redis();
 
 SKIP: {
     diag $skip_msg if $skip_msg;
@@ -63,7 +53,8 @@ sub new_connect {
     my $advance_cleanup_bytes   = shift;
     my $big_data_threshold      = shift || 0;
 
-    $redis = Test::RedisServer->new( conf =>
+    $redis->stop if $redis;
+    $redis = get_redis( conf =>
         {
             port                => Net::EmptyPort::empty_port( DEFAULT_PORT ),
             maxmemory           => 0,
