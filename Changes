@@ -1,6 +1,6 @@
 Revision history for Redis::CappedCollection module
 
-0.14_1 - 0.14_2  Tue Mar  18 2014
+0.14_1 - 0.14_3  Tue Mar  18 2014
     CHANGES:
     - Small test improvement.
 

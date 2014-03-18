@@ -289,6 +289,7 @@ foreach my $arg ( ( undef, 0.5, -1, -3, "", "0.5", \"scalar", [], $uuid ) )
     is $coll.'', $tmp, "value has not changed";
 }
 
+$redis->stop if $redis;
 $port = Net::EmptyPort::empty_port( DEFAULT_PORT );
 $redis = get_redis( conf =>
     {

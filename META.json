@@ -48,9 +48,9 @@
    "provides" : {
       "Redis::CappedCollection" : {
          "file" : "lib/Redis/CappedCollection.pm",
-         "version" : "0.14_2"
+         "version" : "0.14_3"
       }
    },
    "release_status" : "testing",
-   "version" : "0.14_2"
+   "version" : "0.14_3"
 }
